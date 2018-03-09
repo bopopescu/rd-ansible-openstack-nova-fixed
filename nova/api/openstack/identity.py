@@ -42,7 +42,9 @@ def verify_project_id(context, project_id):
         resp = sess.get('/projects/%s' % project_id,
                         endpoint_filter={
                             'service_type': 'identity',
-                            'version': (3, 0)
+                            'version': (3, 0),
+                            'region_name': CONF.keystone.os_region_name,
+                            'interface': CONF.keystone.os_interface
                         },
                         raise_exc=False)
     except kse.EndpointNotFound:
