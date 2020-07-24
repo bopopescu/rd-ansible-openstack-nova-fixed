@@ -761,7 +761,7 @@ class ComputeTaskManager(base.Base):
                 context, instance.host, instance.node)
             dest_node = (
                 objects.ComputeNode.get_first_node_by_host_for_old_compat(
-                    context, host, use_slave=True))
+                    context, host, use_subordinate=True))
         except exception.ComputeHostNotFound as ex:
             with excutils.save_and_reraise_exception():
                 # TODO(mriedem): This ugly RequestSpec handling should be
